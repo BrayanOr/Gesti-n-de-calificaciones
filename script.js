@@ -142,7 +142,6 @@ function generarReporte(estudiantes) {
     console.log(`Promedio: ${promedio.toFixed(1)}`);
     console.log(`Mejor calificación: ${mejorCalificacion}`);
     console.log(`Peor calificación: ${peorCalificacion}`);
-    console.log("-----------------------------");
   });
 }
 
