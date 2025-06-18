@@ -19,21 +19,23 @@ const estudiantes = [
   }
 ];
 
-let totalEstudiantes = estudiantes.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
-console.log("Punto 2.1");
+////////////// Itera sobre el array de estudiantes y muestra sus nombres y calificaciones
+console.log("Puntooooooooooooooooooooooo 2.1");
 
-totalEstudiantes.forEach(function(x) {
-    console.log(`Los estidiantes son: ${x.nombre} con calificaciones: ${x.calificaciones.join(", ")}`);
+estudiantes.forEach(function(x) {
+    console.log(`Los estudiantes son: ${x.nombre} con calificaciones: ${x.calificaciones.join(", ")}`);
     });
 
 
-console.log("Punto 2.2");
+
+///////////////// calcular el promedio de cada estudiante y mostrarlo por consola
+console.log("Puntoooooooooooooooo 2.2");
 
 
 
 
-// Calcular el promedio general de todos los estudiantes
+//////////////// Calcular el promedio general de todos los estudiantes
 let promedio = estudiantes.forEach(estudiante => {
   const suma = estudiante.calificaciones.reduce((total, nota) => total + nota, 0);
   const promedio = suma / estudiante.calificaciones.length;
@@ -51,28 +53,32 @@ const promedioEstudiantes = estudiantes.map(estudiante => {
 
 console.log();
 
-//Obtener mejor calificación de cada estudiante
+////////////Obtener mejor calificación de cada estudiante
 
 console.log("Puntooooooooooooooooo 2.3");
 
 
 
-const mejorCalificacion = estudiantes.forEach(function(est) {
+const mejorCalificacion = estudiantes.map(function(est) {
   let notaMasAlta = Math.max(...est.calificaciones);
-  console.log(`Nombre: ${est.nombre}, Nota más alta: ${notaMasAlta}`);
+  console.log(`La nota mas alta de ${est.nombre} es ${notaMasAlta}`);
+  return  notaMasAlta;
 });
 
-// Obtener peor calificacion de cada estudiante
+
+
+////////////// Obtener peor calificacion de cada estudiante
 
 console.log("Puntooooooooooooooooo 2.4");
 
-const peorCalificacion = estudiantes.forEach(function(est) {
+const peorCalificacion = estudiantes.map(function(est) {
   let notaMasBaja = Math.min(...est.calificaciones);
-  console.log(`Nombre: ${est.nombre}, Nota más baja: ${notaMasBaja}`);
+  console.log(`La nota mas baja de ${est.nombre} es ${notaMasBaja}`);
+  return notaMasBaja;
 });
 
 
-// Agregar una calificacion a cada estudiante
+/////////////Agregar una calificacion a cada estudiante
 console.log("Puntooooooooooooooooo 2.5");
 
 let estudiante1 = estudiantes.find(function(est) {
@@ -84,7 +90,7 @@ if (estudiante1) {
   console.log(`Nueva calificación agregada a ${estudiante1.nombre}: ${estudiante1.calificaciones.join(", ")}`);
 }
 
-// Eliminar una calificación de un estudiante
+//////////////// Eliminar una calificación de un estudiante
 console.log("Puntooooooooooooooooo 2.6");
 
 let estudiante2 = estudiantes.find(function(est) {
@@ -97,7 +103,7 @@ if (estudiante2) {
   console.log(`Nueva lista de calificaciones: ${estudiante2.nombre}: ${estudiante2.calificaciones.join(", ")}`);
 }
 
-// Filtrar estudianes con aprobados
+/////////// Filtrar estudiantes con aprobados
 console.log("Puntooooooooooooooooo 2.7");
 
 let promedioAprobado = 3;
@@ -109,4 +115,35 @@ const estudiantesAprobados = promedioEstudiantes.filter(function(est){
 const aprobadosNombres = estudiantesAprobados.map(est => est.nombre);
 
 
-console.log(`Los estudiantes aprobados son: ${aprobadosNombres.join(", ")}`);
+//console.log(`Los estudiantes aprobados son: ${aprobadosNombres.join(", ")}`);
+
+
+
+///////// Ordenar los estudiantes por orden alfabético
+console.log("Puntooooooooooooooooo 2.8");
+
+let totalEstudiantes = estudiantes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+console.log(totalEstudiantes);
+
+
+////// generar un reporte individual de cada estudiante con su nombre, calificaciones, promedio, mejor y peor calificación
+console.log("Puntooooooooooooooooo 2.9");
+
+function generarReporte(estudiantes) {
+  estudiantes.forEach(estudiante => {
+    const suma = estudiante.calificaciones.reduce((total, nota) => total + nota, 0);
+    const promedio = suma / estudiante.calificaciones.length;
+    const mejorCalificacion = Math.max(...estudiante.calificaciones);
+    const peorCalificacion = Math.min(...estudiante.calificaciones);
+
+    console.log(`Reporte de ${estudiante.nombre}:`);
+    console.log(`Calificaciones: ${estudiante.calificaciones.join(", ")}`);
+    console.log(`Promedio: ${promedio.toFixed(1)}`);
+    console.log(`Mejor calificación: ${mejorCalificacion}`);
+    console.log(`Peor calificación: ${peorCalificacion}`);
+    console.log("-----------------------------");
+  });
+}
+
+generarReporte(estudiantes);
