@@ -199,6 +199,20 @@ const opcion = prompt(
   "¿Qué deseas hacer?\n- Mostrar estudiantes\n- Agregar calificación\n- Generar reporte \nEscribe tu opción:"
 );
 
+if (
+  opcion === "Mostrar estudiantes" ||
+  opcion === "Agregar calificación" ||
+  opcion === "Generar reporte"
+) {
+  // Llama a la función correspondiente aquí
+  console.log("Opción válida:", opcion);
+} else {
+  console.log("Opción no válida. Por favor, escribe una opción de la lista.");
+}
+
+
+
+
 gestion1(opcion);
 gestion2(opcion);
 gestion3(opcion);
